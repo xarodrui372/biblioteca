@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libros - Editorial - Autor</title>
+</head>
+<body>
+  <h1>Catalogo de libros</h1>
+  <ul>
+    {% for libro in libros %}
+    <li>
+        {{libro.titulo}} - Editorial: {{libro.nom_editorial}} 
+      <ul>
+        {% for autor in libro.autores.all %}
+          <li>{{autor}}</li>
+        {% empty %}
+          <li>No hay autores registrado en ese libro</li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% empty %}
+      <li>No hay libros</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
